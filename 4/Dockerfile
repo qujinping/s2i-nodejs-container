@@ -1,9 +1,11 @@
-FROM centos/s2i-base-centos7
+FROM core/builder-base-centos7
 
 # This image provides a Node.JS environment you can use to run your Node.JS
 # applications.
 
 MAINTAINER SoftwareCollections.org <sclorg@redhat.com>
+
+USER root
 
 EXPOSE 8080
 
@@ -38,7 +40,7 @@ COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
 # Each language image can have 'contrib' a directory with extra files needed to
 # run and build the applications.
-COPY ./contrib/ /opt/app-root
+COPY ./contrib /opt/app-root/
 
 # Drop the root user and make the content of /opt/app-root owned by user 1001
 RUN chown -R 1001:0 /opt/app-root && chmod -R ug+rwx /opt/app-root
