@@ -52,3 +52,5 @@ npm install
 
 # Fix source directory permissions
 fix-permissions ./
+
+copy-scripts /opt/app-root/scripts
